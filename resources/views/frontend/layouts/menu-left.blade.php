@@ -5,45 +5,51 @@
         <div class="panel-group category-products" id="accordian">
             <!--category-productsr-->
             <?php
-                use App\Category;
-                $cate = Category::all()->toArray();
+
+            use App\Category;
+
+            $cate = Category::all()->toArray();
             ?>
             <?php foreach ($cate as $key => $value) { ?>
-                <div class="panel-heading">
+                <a href="asd">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a  href="/blog/public/frontend/cate/{{$value['id']}}">
+                                <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                {{$value['name']}}
+                            </a>
+                        </h4>
+                    </div>
+                </a>
 
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordian" href="#mens">
-                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                            {{$value['name']}}
-                        </a>
-                    </h4>
-                </div>
             <?php } ?>
 
         </div>
         <!--/category-products-->
 
         <!-- <div class="brands_products"> -->
-            <!--brands_products-->
-            <h2>Brands</h2>
-            <div class="brands-name">
+        <!--brands_products-->
+        <h2>Brands</h2>
+        <div class="brands-name">
             <?php
-                use App\Brand;
-                $brand = Brand::all()->toArray();
+
+            use App\Brand;
+
+            $brand = Brand::all()->toArray();
             ?>
             <?php foreach ($brand as $key => $value) { ?>
                 <div class="panel-heading">
 
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordian" href="#mens">
-                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                            {{$value['name']}}
-                        </a>
+                    <a  href="/blog/public/frontend/brand/{{$value['id']}}">
+                                <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                {{$value['name']}}
+                            </a>
                     </h4>
                 </div>
             <?php } ?>
-                
-            </div>
+
+        </div>
         <!-- </div> -->
         <!--/brands_products-->
 

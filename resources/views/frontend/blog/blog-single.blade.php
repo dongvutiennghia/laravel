@@ -21,11 +21,11 @@
                                     <form action="" method="POST">
                                     <div class="rate">
                                         <div class="vote">
-                                            <div class="star_1 ratings_stars"><input value="1" type="hidden"></div>
-                                            <div class="star_2 ratings_stars"><input value="2" type="hidden"></div>
-                                            <div class="star_3 ratings_stars"><input value="3" type="hidden"></div>
-                                            <div class="star_4 ratings_stars"><input value="4" type="hidden"></div>
-                                            <div class="star_5 ratings_stars"><input value="5" type="hidden"></div>
+                                            <div class="star_1 ratings_stars" data-toggle="modal" data-target="#exampleModal"><input value="1" type="hidden"></div>
+                                            <div class="star_2 ratings_stars" data-toggle="modal" data-target="#exampleModal"><input value="2" type="hidden"></div>
+                                            <div class="star_3 ratings_stars" data-toggle="modal" data-target="#exampleModal"><input value="3" type="hidden"></div>
+                                            <div class="star_4 ratings_stars" data-toggle="modal" data-target="#exampleModal"><input value="4" type="hidden"></div>
+                                            <div class="star_5 ratings_stars" data-toggle="modal" data-target="#exampleModal"><input value="5" type="hidden"></div>
                                             <span class="rate-np">0</span>
                                             {{-- <button name="rate" type="submit">rate</button> --}}
                                         </div>
@@ -271,7 +271,24 @@
                                 // }
 
                             ?>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thong bao</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Danh gia thanh cong
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">dong</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
     $(document).ready(function(){
         // alert($('li.cmt').attr('id'));

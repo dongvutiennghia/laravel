@@ -30,6 +30,8 @@ Route::group([
     Route::get('/index', 'HomeController@index');
 
     Route::get('/logout', 'MemberController@logout');
+    Route::get('/ad', 'MemberController@ad');
+
     //account
     Route::group([
         'middleware' => ['login']
@@ -78,6 +80,12 @@ Route::group([
     //search price
     Route::post('/ajax_search_price', 'SearchController@ajax_search_price');
 
+    //search cate,brand
+    Route::get('/cate/{id}', 'SearchController@search_cate');
+    Route::get('/brand/{id}', 'SearchController@search_brand');
+
+    //lichsumuahang
+   Route::get('/lichsumuahang', 'AccountController@lichsumuahang');    
 
 
     //check out-send mail (mẫu)
@@ -143,6 +151,9 @@ Route::group([
 
     //history
     Route::get('/history', 'DashboardController@history')->name('history');
+    Route::get('/history/{id}', 'DashboardController@history_detail')->name('history');
+
+    
     //product
     Route::get('/product', 'ProductController@product');
     Route::get('/add_product', 'ProductController@add_product');
@@ -150,7 +161,10 @@ Route::group([
     Route::get('/edit_product/{id}', 'ProductController@edit_product');
     Route::post('/edit_product/{id}', 'ProductController@post_edit_product');
 
-
+    //comment
+    Route::get('/comment', 'BlogController@comment');
+    Route::get('/delete_comment/{id}', 'BlogController@delete_comment');
+ 
 
     // ban mau
     Route::get('/form-basic', 'DashboardController@form_basic');

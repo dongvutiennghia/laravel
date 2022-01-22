@@ -13,6 +13,8 @@ use App\Brand;
 use App\Cart;
 use App\Test;
 use App\Product;
+use App\History;
+
 use Image;
 use DateTimeZone;
 use App\Http\Requests\frontend\AddProductRequest;
@@ -89,7 +91,7 @@ class AccountController extends Controller
     {
 
 
-        $product = Product::select()->orderBy('id', 'DESC')->get();
+        $product = Product::select()->where('id_user',Auth::id())->orderBy('id', 'DESC')->get();
 
 
         // $getArrImage = [];
@@ -409,5 +411,17 @@ class AccountController extends Controller
         } else {
             return response()->json(['errors' => 'failed']);
         }
+    }
+    public function lichsumuahang(Request $request)
+    {
+        // $cart = Cart::findOrFail(Auth::id())->toArray();
+        
+        $histories = History::orderBy('id', 'DESC')->paginate(5);
+        $top = History::select('email','qty')->get()->toArray();
+        
+        // echo "<pre>";
+        // var_dump($cart);
+        // return view()
+        return view('frontend/account/lichsumuahang',compact('histories'));
     }
 }

@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User;
 use App\Country;
 use App\Blog;
 use App\History;
+use App\Cart;
 use MicrosoftAzure\Storage\Blob\Models\Blob;
 class DashboardController extends Controller
 {
@@ -29,10 +30,30 @@ class DashboardController extends Controller
 
     public function history()
     {
-        $histories = History::paginate(5);
+        $histories = History::orderBy('id', 'DESC')->paginate(5);
+        $top = History::select('email','qty')->get()->toArray();
+        $number = 0;
+
+        foreach($top as $key=>$value){
+            
+        }
+        // echo "<pre>";
+        // var_dump($top);
+        
+    
         return view('admin/dashboard/history',compact('histories'));
 
     }
+    public function history_detail(Request $request){
+        $cart = Cart::select()->where('id_user',$request->id)->get()->toArray();
+        // echo "<pre>";
+        // var_dump($cart);
+        // foreach($cart as $key=>$value){
+        //     echo $value['id_product'];
+        // }
+        return view('admin/dashboard/history_detail',compact('cart'));
+    }
+  
     public function pages_profile(Request $request)
     {
         if(Auth::check()){

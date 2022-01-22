@@ -1,7 +1,6 @@
 
 @extends('admin.layouts.app')
 @section('content')
-<div class="container-fluid">
 
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -18,7 +17,7 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Home</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">History</li>
+                            <li class="breadcrumb-item active" aria-current="page">Blog</li>
                         </ol>
                     </nav>
                 </div>
@@ -49,43 +48,27 @@
 
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">id_user</th>
+                                <th scope="col">Blog ID</th>
+                                <th scope="col">User ID</th>
+                                <th scope="col" colspan="">Name</th>
 
+                                <th scope="col">Content</th>
 
-                                <th scope="col">Item</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Phone</th>
-                                <!-- <th scope="col">Day</th> -->
-
-                                <th scope="col">Detail</th>
-
-                                <!-- <th scope="col" colspan="3">Action</th> -->
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            @foreach ($histories as $item)
+                            @foreach ($comments as $item)
                             <tr>
 
                                 <th scope="row">{{$item['id']}}</th>
-                                <td>{{$item['email']}}</td>
-                                <td>{{$item['name']}}</td>
+                                <th scope="row">{{$item['blog_id']}}</th>
+                                <th scope="row">{{$item['user_id']}}</th>
+                                <th scope="row">{{$item['name']}}</th>
+                                <th scope="row">{{$item['content']}}</th>
 
-                                <td>{{$item['id_user']}}</td>
-
-                                <td>{{$item['qty']}}</td>
-                                <td>{{$item['price']}}</td>
-                                <td>{{$item['phone']}}</td> 
-                                <td><a href="history/{{$item['id_user']}}">detail</a></td> 
-
-                                <!-- <td>
-                                    <select name="" id="">
-                                        <option value="">da xu li</option>
-                                    </select>
-                                </td> -->
-                                <!-- <td><a href="edit_blog/{{$item['id']}}">Edit</a>|<a href="delete_blog/{{$item['id']}}">Delete</a></td> -->
+                                
+                                <td><a href="delete_comment/{{$item['id']}}">Delete</a></td>
                             </tr>
                             <tr>
                             @endforeach
@@ -94,7 +77,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    {{$histories->links()}}
+                    {{$comments->links()}}
                     @if($errors->any())
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>

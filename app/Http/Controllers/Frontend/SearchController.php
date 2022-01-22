@@ -126,4 +126,20 @@ class SearchController extends Controller
 
         return response()->json(['products'=>$products]);
     }
+    public function search_cate(Request $request)
+    {
+        $products = Product::select()->where('id_category',$request->id)->get()->toArray();
+        // echo "<pre>";
+        // var_dump($products);
+        // return 
+        return view('frontend/search/search_cate',compact('products'));
+    }
+    public function search_brand(Request $request)
+    {
+        $products = Product::select()->where('id_brand',$request->id)->get()->toArray();
+        // echo "<pre>";
+        // var_dump($products);
+        // return 
+        return view('frontend/search/search_brand',compact('products'));
+    }
 }

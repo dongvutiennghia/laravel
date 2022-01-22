@@ -17,6 +17,7 @@
                         <ul>
                             <li><a href="">Account </a></li>
                             <li><a href="/blog/public/frontend/my_product">My Product </a></li>
+                            <li><a href="/blog/public/frontend/lichsumuahang">Lich su mua hang </a></li>
 
                         </ul>
                     </div>

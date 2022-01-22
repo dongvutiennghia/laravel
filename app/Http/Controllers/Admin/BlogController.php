@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Comments;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\admin\UpdateProfileRequest;
 use App\Http\Requests\admin\InsertCountryRequest;
@@ -82,5 +83,14 @@ class BlogController extends Controller
         if($blog->save()){
             return redirect('blog')->with('success',__('update blog thanh cong'));
         }
+    }
+    public function comment(){
+        $comments = Comments::orderBy('id', 'desc')->paginate(5);
+        return view('admin/blog/comment',compact('comments'));
+    }
+    public function delete_comment(Request $request){
+         Comments::findOrfail($request->id)->delete();
+        // $comment->delete();
+        return redirect()->back()->with('success','delete thanh cong');
     }
 }

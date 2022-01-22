@@ -9,6 +9,7 @@ use App\Http\Requests\frontend\MemberRegisterRequest;
 // use App\Http\Requests\admin\UpdateProfileRequest;
 use App\User;
 use App\Country;
+use App\Cart;
 use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
@@ -17,7 +18,26 @@ class MemberController extends Controller
     // {
     //     $this->middleware('auth');
     // }
+    public function ad()
+    {
+        $total_item = session()->get('total_item');
+        $carts_session = session()->get('carts_session');
 
+
+        $total_price = 0;
+        echo "<pre>";
+        var_dump($carts_session);
+        foreach($carts_session as $key=>$value){
+            $cart = new Cart; 
+            $cart->image = $value['product_image'];
+            $cart->name = $value['product_name'];
+            $cart->price = $value['product_price'];
+            $cart->qty = $value['product_qty'];
+            $cart->id_product = $value['product_id'];
+            $cart->save();
+            // echo $value['product_image']."<br>";
+        }       
+    }
     public function index()
     {
         if (Auth::check()) {
@@ -93,7 +113,7 @@ class MemberController extends Controller
             } else {
                 return redirect()->back()->withErrors('register failed');
             }
-        }else{
+        } else {
             return redirect()->back()->withErrors('Email da ton tai');
         }
     }
