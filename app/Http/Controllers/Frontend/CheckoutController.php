@@ -129,7 +129,7 @@ class CheckoutController extends Controller
                             $cart->price = $value['product_price'];
                             $cart->qty = $value['product_qty'];
                             $cart->id_product = $value['product_id'];
-
+                            
                             $cart->id_user = Auth::id();
 
                             $cart->save();
@@ -206,10 +206,11 @@ class CheckoutController extends Controller
                     $cart->id_product = $value['product_id'];
                     $cart->id_user = Auth::id();
                     $cart->save();
-                    session()->forget('carts_session');
-                    session()->forget('total_item');
-                    return redirect()->back()->with('success', 'Order thanh cong');
+                   
                 }
+                session()->forget('carts_session');
+                session()->forget('total_item');
+                return redirect()->back()->with('success', 'Order thanh cong');
             }
         }
     }

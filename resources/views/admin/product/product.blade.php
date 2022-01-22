@@ -61,7 +61,7 @@
                                 <a class="cart_quantity_edit" href="edit_product/{{$value['id']}}"><i class="m-r-10 mdi mdi-account-edit"></i></a>
                             </td>
                             <td class="delete">
-                                <a class="cart_quantity_delete" href=""><i class="m-r-10 mdi mdi-delete"></i></a>
+                                <a class="cart_quantity_delete" href="delete_product/{{$value['id']}}"><i class="m-r-10 mdi mdi-delete"></i></a>
                             </td>
                         </tr>
                     <?php

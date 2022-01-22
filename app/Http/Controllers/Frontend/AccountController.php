@@ -416,12 +416,16 @@ class AccountController extends Controller
     {
         // $cart = Cart::findOrFail(Auth::id())->toArray();
         
-        $histories = History::orderBy('id', 'DESC')->paginate(5);
-        $top = History::select('email','qty')->get()->toArray();
+        $carts = Cart::where('id_user',Auth::id())->orderBy('id', 'DESC')->paginate(5);
+        // $top = History::select('email','qty')->get()->toArray();
         
         // echo "<pre>";
         // var_dump($cart);
         // return view()
-        return view('frontend/account/lichsumuahang',compact('histories'));
+        return view('frontend/account/lichsumuahang',compact('carts'));
+    }
+    public function delete_product_s(Request $request)
+    {
+        // echo "ads";
     }
 }

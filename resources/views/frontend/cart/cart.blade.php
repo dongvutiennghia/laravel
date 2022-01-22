@@ -32,6 +32,11 @@
 								$total_price=0; 
 								echo "<pre>";
 								var_dump($carts_session);
+								foreach ($carts_session as $key => $value) {
+									// echo $key[$value['product_name']]."<br>";
+									// echo $carts_session[$key]['product_name'];
+									echo $value['product_name'];
+								}
 								foreach($carts_session as $key=>$value){ 
 									
 									$total_price += $value['product_qty']*$value['product_price'];

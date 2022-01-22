@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/asd', function(){
+Route::get('/asd', function () {
     echo "asdasd";
 });
 
@@ -52,6 +52,9 @@ Route::group([
         Route::post('/add_product', 'AccountController@post_product');
         Route::get('/edit_product/{id}', 'AccountController@edit_product');
         Route::post('/edit_product/{id}', 'AccountController@post_edit_product');
+        
+        Route::get('/delete_product/{id}', '@delete_product_s');
+
         Route::post('/comment/{id}', 'BlogController@comment')->name('comment/{id}.post');
         Route::post('/rep_comment/{id}', 'BlogController@rep_comment')->name('comment/{id}.post');
         Route::post('/checkout', 'CheckoutController@post_checkout');
@@ -85,7 +88,7 @@ Route::group([
     Route::get('/brand/{id}', 'SearchController@search_brand');
 
     //lichsumuahang
-   Route::get('/lichsumuahang', 'AccountController@lichsumuahang');    
+    Route::get('/lichsumuahang', 'AccountController@lichsumuahang');
 
 
     //check out-send mail (mẫu)
@@ -153,18 +156,20 @@ Route::group([
     Route::get('/history', 'DashboardController@history')->name('history');
     Route::get('/history/{id}', 'DashboardController@history_detail')->name('history');
 
-    
+
     //product
     Route::get('/product', 'ProductController@product');
     Route::get('/add_product', 'ProductController@add_product');
     Route::post('/add_product', 'ProductController@post_add_product');
+
+
     Route::get('/edit_product/{id}', 'ProductController@edit_product');
     Route::post('/edit_product/{id}', 'ProductController@post_edit_product');
 
     //comment
     Route::get('/comment', 'BlogController@comment');
     Route::get('/delete_comment/{id}', 'BlogController@delete_comment');
- 
+
 
     // ban mau
     Route::get('/form-basic', 'DashboardController@form_basic');

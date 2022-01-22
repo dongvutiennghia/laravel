@@ -17,36 +17,38 @@
 
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Email</th>
+                                <!-- <th scope="col">Email</th> -->
+                                <th scope="col">Image</th>
+
                                 <th scope="col">Name</th>
-                                <th scope="col">id_user</th>
+                                <!-- <th scope="col">id_user</th> -->
 
 
                                 <th scope="col">Item</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Phone</th>
+                                <!-- <th scope="col">Phone</th> -->
                                 <!-- <th scope="col">Day</th> -->
 
-                                <th scope="col">Detail</th>
+                                <th scope="col">Time</th>
 
                                 <!-- <th scope="col" colspan="3">Action</th> -->
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($histories as $item)
+                            @foreach ($carts as $item)
                             <tr>
 
                                 <th scope="row">{{$item['id']}}</th>
-                                <td>{{$item['email']}}</td>
+                                <td><img width="85px" height="86px" src="{{$item['image']}}" alt=""></td>
                                 <td>{{$item['name']}}</td>
 
-                                <td>{{$item['id_user']}}</td>
+                                <!-- <td>{{$item['id_user']}}</td> -->
 
                                 <td>{{$item['qty']}}</td>
                                 <td>{{$item['price']}}</td>
-                                <td>{{$item['phone']}}</td> 
-                                <td><a href="history/{{$item['id_user']}}">detail</a></td> 
+                                <!-- <td>{{$item['phone']}}</td>  -->
+                                <td><a href="history/{{$item['id_user']}}">{{$item['created_at']}}</a></td> 
 
                                 <!-- <td>
                                     <select name="" id="">
@@ -62,7 +64,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    {{$histories->links()}}
+                    {{$carts->links()}}
                     @if($errors->any())
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
